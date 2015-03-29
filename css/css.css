@@ -1,0 +1,320 @@
+
+ #login_form {
+    margin-left: 60em;
+ }
+ .custom {
+   margin-left: 160px;
+   width: 100px;
+ }
+ .register {
+  margin-left: 15px;
+  width: 100px;
+ }
+  #register_form {
+  margin-top: -150px;
+ }
+ #register_title {
+  margin-left: 60px;
+ }
+ .student_register {
+     width: 100px;
+ }
+ .error{
+  border: 1px solid red;
+}
+#edit_question {
+  width: 600px;
+  height: 30px;
+}
+#add_question {
+  margin-left: 40%;
+}
+th {
+  text-align: center;
+}
+#survey_submit {
+  margin-left: 40%;
+}
+.col-md-9 {
+  margin-left: 150px;
+}
+.col-md-11 {
+  margin-left: 50px;
+}
+#buttons {
+  margin-left: 36%;
+}
+#question {
+  width: 600px;
+  
+}
+#nav {
+  background-color: #D5D5D5;
+  border: 1px solid #B8B8B8;
+  padding-top: 6px;
+  height: 25px;
+  padding-left: 3px;
+  margin-left:40px;
+  margin-right:40px;
+}
+#nav a {
+  border: 1px solid #B7B7B7;
+  padding: 6px;
+  background-color: #F3F3F3;
+  color: #0077B4;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: Verdana, Sans-Serif;
+  font-size: 12px;
+}
+#nav a:hover {
+  color: #00A8FF;
+  background-color: #ffffff;
+  border: 1px solid #727272;
+  border-bottom: 1px solid #ffffff;
+}
+#add_q {
+  margin-left: 200px;
+}
+#login {
+  margin-left: 38%;
+}
+#login_title {
+   margin-left: 25%;
+   color: #488AC7;
+}
+#login_submit {
+  width: 100px;
+  margin-left: 80px;
+}
+#username {
+  height: 30px;
+}
+#password {
+  height: 30px;
+}
+input[type=checkbox] {
+  width:15px;
+  height:15px;
+}
+.results-bar {
+  padding: 10px;
+  color: white;
+  background: url(/survey/css/images/result-bar-bg.png) left center;
+  white-space: nowrap;
+}
+span.total-votes {
+  font-size: 2.6em;
+}
+.progress {
+  width: 300px;
+    text-align: center;
+   
+
+}
+ #reg_form {
+   margin-left: 160px;
+   width: 100px;
+   padding: 6px 6px;
+ }
+ #reg {
+   padding: 6px 6px;
+   margin-left:300px;
+ }
+
+ #user_login {
+  margin-left:400px;
+  height: 30px;
+ }
+ #title_success {
+   margin-left: 0px;
+   color: #488AC7;
+ }
+ .login_custom {
+   margin-left: 480px;
+   width: 100px;
+ }
+
+ 
+#mtabs_wrapper {
+    width: 422px;
+}
+#mtabs_container {
+    border-bottom: 1px solid #ccc;
+}
+#mtabs {
+    list-style: none;
+    padding: 5px 0 4px 0;
+    margin: 0 0 0 0px;
+    /* font: 0.75em arial; */
+}
+#mtabs li {
+    display: inline;
+}
+#mtabs li a {
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    text-decoration: none;
+    color:#000;
+    font-family: Artifika, serif; 
+    background-color: #eeeeee;
+    font-size:14px;
+    /*border-bottom: 1px solid #ccc;
+    outline: none;*/
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+#mtabs li a:hover {
+    background-color: #dddddd;
+    padding: 4px 6px;
+}
+#mtabs li.active a {
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    padding: 4px 6px 5px 6px;
+    /*border-bottom: none;*/
+}
+#mtabs li.active a:hover {
+    background-color: #eeeeee;
+    padding: 4px 6px 5px 6px;
+    /*border-bottom: none;*/
+}
+ 
+#mtabs li a.icon_accept {
+    background-image: url(accept.png);
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+}
+#mtabs li a.icon_accept:hover {
+    padding-left: 24px;
+}
+ 
+#mtabs_content_container {
+    border: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    width: 1000px;
+
+}
+.mtab_content {
+    display: none;
+}
+#password_login {
+  margin-left: 10px;
+  height: 30px;
+}
+.vertical-progressbar{
+  float: left;
+  margin-right: 60px;
+  
+}
+.vertical {
+  width: 25px;
+  height: 200px !important;
+  margin-left: 150px;
+  position: relative;
+}
+.vertical .bar {
+    width: 100% !important;
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+   
+}
+
+
+.progress.vertical {
+  width: @progressbarVerticalWidth;
+  height: 100%;
+
+  margin-right: @progressbarVerticalWidth;
+}
+
+
+
+.progress.vertical.bottom .progressbar-front-text {
+  position: absolute;
+
+  bottom: 0;
+
+}
+
+.progress.vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  .transition(height .6s ease);
+
+}
+
+.progress.vertical.bottom .progress-bar {
+  position: absolute;
+  bottom: 0;
+}
+
+// bootstrap-progressbar reverted low percentages styles
+// -----------------------------------------------------
+
+.progress-bar {
+ 
+    &.progress-bar-success {
+
+      .progress-bar-variant(@progress-bar-success-bg);
+    }
+
+    &.progress-bar-info {
+      .progress-bar-variant(@progress-bar-info-bg);
+    }
+
+    &.progress-bar-warning {
+      .progress-bar-variant(@progress-bar-warning-bg);
+    }
+
+    &.progress-bar-danger {
+      .progress-bar-variant(@progress-bar-danger-bg);
+    }
+  }
+}
+
+
+#average {
+  margin-left: 50%;
+  font-weight: bold;
+}
+#show_error {
+  margin-left: 25%;
+}
+#chart_container {
+  margin-left: 13%;
+}
+#chart_title {
+  font-weight: bold;
+  margin-left: 30%;
+}
+input[type=radio] {
+  width:15px;
+  height:15px;
+}
+#chart {
+  margin-left: 110px;
+}
+
+#question2_name {
+  padding-left: 5px;
+}
+#header_title {
+  padding-left: 50px;
+}
+#average {
+  padding-left: 250px;
+  font-weight: bold;
+}
+#average_tab1 {
+   font-weight: bold;
+}
+.meow { width: 350px; height: 300px; display: block; float: left; background: #FFFF99; border: 1px solid #000; }
+.clearfix { clear: both }
+.contain { margin-left: 150px; }
