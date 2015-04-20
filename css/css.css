@@ -1,25 +1,28 @@
 
- #login_form {
-    margin-left: 60em;
- }
- .custom {
-   margin-left: 160px;
-   width: 100px;
- }
- .register {
+#login_form {
+  width: 31%; 
+  float: left; 
+  margin-left:100px;
+ 
+}
+.custom {
+  margin-left: 160px;
+  width: 100px;
+}
+.register {
   margin-left: 15px;
   width: 100px;
- }
-  #register_form {
+}
+#register_form {
   margin-top: -150px;
- }
- #register_title {
+}
+#register_title {
   margin-left: 60px;
- }
- .student_register {
-     width: 100px;
- }
- .error{
+}
+.student_register {
+  width: 100px;
+}
+.error{
   border: 1px solid red;
 }
 #edit_question {
@@ -33,7 +36,7 @@ th {
   text-align: center;
 }
 #survey_submit {
-  margin-left: 40%;
+  margin-left: 45%;
 }
 .col-md-9 {
   margin-left: 150px;
@@ -45,18 +48,18 @@ th {
   margin-left: 36%;
 }
 #question {
-  width: 600px;
-  
+  width: 600px;  
 }
 #nav {
   background-color: #D5D5D5;
   border: 1px solid #B8B8B8;
   padding-top: 6px;
-  height: 25px;
+
   padding-left: 3px;
   margin-left:40px;
   margin-right:40px;
 }
+
 #nav a {
   border: 1px solid #B7B7B7;
   padding: 6px;
@@ -108,99 +111,89 @@ span.total-votes {
 }
 .progress {
   width: 300px;
-    text-align: center;
-   
-
+  text-align: center;   
 }
- #reg_form {
-   margin-left: 160px;
-   width: 100px;
-   padding: 6px 6px;
- }
- #reg {
-   padding: 6px 6px;
-   margin-left:300px;
- }
+#reg_form {
+  margin-left: 160px;
+  width: 100px;
+  padding: 6px 6px;
+}
+#reg {
+  padding: 6px 6px;
+  margin-left:300px;
+}
 
- #user_login {
+#user_login {
   margin-left:400px;
   height: 30px;
- }
- #title_success {
-   margin-left: 0px;
-   color: #488AC7;
- }
- .login_custom {
-   margin-left: 480px;
-   width: 100px;
- }
-
- 
+}
+#title_success {
+  margin-left: 260px;
+  color: #488AC7;
+}
+.login_custom {
+  margin-left: 480px;
+  width: 100px;
+}
 #mtabs_wrapper {
-    width: 422px;
+  width: 422px;
 }
 #mtabs_container {
-    border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 #mtabs {
-    list-style: none;
-    padding: 5px 0 4px 0;
-    margin: 0 0 0 0px;
-    /* font: 0.75em arial; */
+  list-style: none;
+  padding: 5px 0 4px 0;
+  margin: 0 0 0 0px;
 }
 #mtabs li {
-    display: inline;
+  display: inline;
 }
 #mtabs li a {
-    border: 1px solid #ccc;
-    padding: 4px 6px;
-    text-decoration: none;
-    color:#000;
-    font-family: Artifika, serif; 
-    background-color: #eeeeee;
-    font-size:14px;
-    /*border-bottom: 1px solid #ccc;
-    outline: none;*/
-    border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 5px 5px 5px 5px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+  text-decoration: none;
+  color:#000;
+  font-family: Artifika, serif; 
+  background-color: #eeeeee;
+  font-size:14px;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
 }
 #mtabs li a:hover {
-    background-color: #dddddd;
-    padding: 4px 6px;
+  background-color: #dddddd;
+  padding: 4px 6px;
 }
 #mtabs li.active a {
-    border-bottom: 1px solid #ccc;
-    background-color: #fff;
-    padding: 4px 6px 5px 6px;
-    /*border-bottom: none;*/
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  padding: 4px 6px 5px 6px;
 }
 #mtabs li.active a:hover {
-    background-color: #eeeeee;
-    padding: 4px 6px 5px 6px;
-    /*border-bottom: none;*/
+  background-color: #eeeeee;
+  padding: 4px 6px 5px 6px;
 }
  
 #mtabs li a.icon_accept {
-    background-image: url(accept.png);
-    background-position: 5px;
-    background-repeat: no-repeat;
-    padding-left: 24px;
+  background-image: url(accept.png);
+  background-position: 5px;
+  background-repeat: no-repeat;
+  padding-left: 24px;
 }
 #mtabs li a.icon_accept:hover {
-    padding-left: 24px;
+  padding-left: 24px;
 }
  
 #mtabs_content_container {
-    border: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding: 10px;
-    width: 1000px;
-
+  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  width: 1000px;
 }
 .mtab_content {
-    display: none;
+  display: none;
 }
 #password_login {
   margin-left: 10px;
@@ -208,8 +201,7 @@ span.total-votes {
 }
 .vertical-progressbar{
   float: left;
-  margin-right: 60px;
-  
+  margin-right: 60px;  
 }
 .vertical {
   width: 25px;
@@ -218,36 +210,27 @@ span.total-votes {
   position: relative;
 }
 .vertical .bar {
-    width: 100% !important;
-    position: absolute;
-    bottom: 0;
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
-   
+  width: 100% !important;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;  
 }
-
-
 .progress.vertical {
   width: @progressbarVerticalWidth;
   height: 100%;
-
   margin-right: @progressbarVerticalWidth;
 }
 
-
-
 .progress.vertical.bottom .progressbar-front-text {
   position: absolute;
-
   bottom: 0;
-
 }
 
 .progress.vertical .progress-bar {
   width: 100%;
   height: 0;
   .transition(height .6s ease);
-
 }
 
 .progress.vertical.bottom .progress-bar {
@@ -278,7 +261,6 @@ span.total-votes {
     }
   }
 }
-
 
 #average {
   margin-left: 50%;
@@ -318,3 +300,99 @@ input[type=radio] {
 .meow { width: 350px; height: 300px; display: block; float: left; background: #FFFF99; border: 1px solid #000; }
 .clearfix { clear: both }
 .contain { margin-left: 150px; }
+#pagination {
+  text-align: center;
+}
+.sorting_disabled {
+  background-color: #A9A9A9;
+}
+
+thead {
+  background-color: #A9A9A9;
+}
+#student_results {
+  margin-left: 20px;
+  margin-top: 30px;
+}
+#students_show {
+  margin-left: 30%;
+  margin-top: 30px;
+}
+#submit_add_question {
+  margin-left: 47%;
+}
+#button {
+  margin-left: 45%;
+}
+
+#table2 {
+  margin-left:20%;
+}
+#student_surveys {
+  margin-left:280px;
+}
+
+
+#student_surveys_submit {
+  margin-left:40%;
+}
+#unapproved_users {
+   margin-left: 20%; 
+}
+
+#survey_manage {
+  margin-left:60px;
+}
+.filters {
+  background-color: white;
+}
+.filters input {
+  height: 25px;
+}
+tfoot input {
+    height: 25px; 
+    text-align:center; 
+}
+thead input {
+    height: 25px; 
+    text-align:center; 
+}
+
+#teacher_student_show {
+  margin-left:20%;
+}
+
+#teachers_show {
+  margin-left: 0%;
+ 
+}
+#coord_show {
+  margin-left: 7%; 
+}
+
+#add_teachers {
+  margin-left: 35%;
+}
+#delete_teachers {
+  margin-left: 35%;
+}
+#wait_approval {
+  margin-left:40%;
+}
+#home_code {
+  width: 170px;
+  height: 30px;
+  margin-left:20px;
+}
+#div_code {
+  margin-top: 10px;
+  width: 40%; 
+  float: left; 
+  margin-left:180px;'
+}
+#code_submit {
+  margin-left:60px;
+}
+#container_login {
+  width: 100%;
+}

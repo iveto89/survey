@@ -3,12 +3,11 @@
     </head>
     <body>
         <div class='container'>
-   
-		<h3 id='login_title'>
-   			Излязохте успешно!
-            Можете да влезете от тук:
-		</h3>
-        <br/>
+    		<h3 id='login_title'>
+       			Излязохте успешно!
+                Можете да влезете от тук:
+    		</h3>
+            <br/>
 
 <?php 
     echo validation_errors();

@@ -16,7 +16,7 @@ echo "</div>";
 echo "<div id='login'>";
   
   echo form_open('home/login');
-   $data = array(
+  $data = array(
     'name'        => 'username',
     'id'          => 'username',
     'placeholder'       => 'Потребителско име'    

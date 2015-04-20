@@ -8,3 +8,25 @@
 
 </body>
 </html>
+
+
+ <script>
+    function showHide(self, show){
+        if (show)
+            $('.toggle').show();
+        else
+            $('.toggle').hide();
+        $(":radio").prop('checked',false);
+        $(self).prop('checked',true);
+    }
+  </script>  
+    <script>
+    function teachers_show(yes, no){
+        if (no)
+            $('.all_teachers_show').show();
+        else
+            $('.all_teachers_show').hide();
+        $(":radio").prop('checked',false);
+        $(yes).prop('checked',true);
+    }
+  </script>  

@@ -9,17 +9,15 @@
  
   //echo implode(",", $url);
 ?>
-  <head>
-    <!--Load the AJAX API-->
+  <head>  
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
+     
      google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       
        function drawChart() {
-        // Create the data table.
+       
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
@@ -40,7 +38,7 @@
   </head>
 
   <body>
-    <!--Div that will hold the pie chart-->
+   
     <div id="chart_div"></div>
   </body>
 </html>

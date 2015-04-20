@@ -1,21 +1,24 @@
 <html>
 <head>
-    <title>
-        
-    </title>  
+    <title></title>  
 </head>
 <body>
 <br/>
   
 <?php 
-
     echo validation_errors();
-    echo "<div class='container'>";
-    echo "<div class='col-md-4' id='login_form'>";
+    echo "<div class='container'  id='container_login' >";
+    echo "<div class='col-md-4' id='div_code' >";
+    echo form_open('home/code_check');
+    echo "<h4>Въведете Вашия код тук: </h4><br/>";
+    echo "<input type='text' name='code' id='home_code' /><br/><br/>";
+    echo "<input type='submit' name='code_submit' id='code_submit' value='Провери' class='btn btn-primary'/>";
+    echo form_close();
+    echo "</div>";
+    echo "<div class='col-md-4' id='login_form' >";
     echo form_open('home/login');
     echo "<table border='0'>";
-    echo "<tr><td>";  
-   
+    echo "<tr><td>";     
     echo "Потребителско име: </td><td>";
     $data=array(
         'name' => 'username',
@@ -37,11 +40,9 @@
     echo form_submit(['name' => 'submit', 'value' => 'Вход', 'class' => 'btn btn-primary custom']);
     echo '<br/><br/>';
     echo form_close();
-     echo "<a href='/survey/index.php/home/register' 
+    echo "<a href='/survey/index.php/home/register' 
     role='button' class='btn btn-success' id='reg_form'> Регистрация </a>";
-    echo "</div>";
-    
-
+    echo "</div>";    
     echo "</div>";
     echo "</div>";
     echo "</body>";

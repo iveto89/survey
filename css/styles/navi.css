@@ -12,8 +12,8 @@ File: Navigation CSS
 
 /* ESSENTIAL STYLES */
 
-.nav, .nav *{margin:0; padding:0; list-style:none;}
-.nav ul{position:absolute; top:-999em; width:10em;}
+.nav, .nav *{margin:0; padding:0; list-style:none;  }
+.nav ul{position:absolute; top:-999em; width:10em; }
 .nav ul li{width:100%;}
 .nav li:hover{visibility:inherit;}
 .nav li{position:relative; display:inline-block; zoom:1; *display:inline;}

@@ -1,0 +1,95 @@
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css" media="all" id="dataTables">
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+
+<script>
+
+var records = [
+	{ name: "Johnny", email: "johnny@gmail.com", status: "active"},
+	{ name: "Peter", email: "peter@yahoo.com", status: "inactive"}
+];
+
+var editor;
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor({
+		table: "#search_result",
+		fields: [{
+				label: "name:",
+				name: "name"
+			},
+			{
+				label: "email:",
+				name: "email"
+			},
+			{
+				label: "status:",
+				name: "status"
+			}
+		],
+		ajax: function(method, url, data, successCallback, errorCallback) {
+			var id = data.id;
+			//do something;
+			successCallback({
+				"id": id
+			});
+		}
+	});
+
+	$('#search_result').on('click', 'tbody td', function(e) {
+		editor.inline(this);
+	});
+
+	editor.on( 'preSubmit', function ( e, data ) {
+		data.data.name = 'Fred';
+	} );
+
+	var table = $('#search_result').DataTable({
+		data: records,
+		order: [],
+		columns: [
+			{ data: 'name' },
+			{ data: 'email' },
+			{ data: 'status' }
+		]
+	});
+});
+
+</script>
+
+</head>
+
+<body>
+
+<table id="search_result" class="display" cellspacing="0">
+
+<thead>
+
+<tr>
+
+<th style="text-align: left">Customer Name</th>
+
+<th style="text-align: left">Customer Email</th>
+
+<th style="text-align: left">Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</body>
+
+</html>
