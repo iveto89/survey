@@ -4,6 +4,7 @@ class Admin_model extends CI_model {
     parent:: __construct();
     $this->load->database();
     $this->load->library('session'); 
+   
   }
 
    
@@ -60,7 +61,7 @@ class Admin_model extends CI_model {
   public function deactivate_questions() {
       $submit=$this->input->post('deactivate');
       $date = new DateTime("now"); 
-      if(isset($submit)&&($submit=='Изтрий')) {
+      if(isset($submit)&&($submit=='Премахни')) {
           $data = array(         
             'deactivated_at' => $date->format('Y-m-d H:i:s')          
           );
@@ -74,6 +75,25 @@ class Admin_model extends CI_model {
 
                 return false;
       }
+  }
+  public function restore_questions() {
+     $submit=$this->input->post('restore');
+      $date = new DateTime("now"); 
+      if(isset($submit)&&($submit=='Възстанови')) {
+          $data = array(         
+            'deactivated_at' => NULL          
+          );
+          $this->db->where('question_id', $this->input->post('question_id'));
+          $this->db->update('survey_questions', $data);    
+      
+            if($this->db->affected_rows() > 0)
+            {   
+                return true;
+            } 
+
+                return false;
+      }
+
   }
 
   public function deactivate_coordinator() {
@@ -127,11 +147,11 @@ class Admin_model extends CI_model {
     $submit=$this->input->post('add');
         $date = new DateTime("now"); 
         if(isset($submit)&&($submit=='Добави ученици')) {
-          if($this->input->post('student2')) {
-            foreach($this->input->post('student2') AS $student2) {          
+          if($this->input->post('student')) {
+            foreach($this->input->post('student') AS $student) {          
 
               $data=array(
-                'student_id' => $student2,
+                'student_id' => $student,
                 'teacher_id' => $this->uri->segment(3),
                 'created_at' => $date->format('Y-m-d H:i:s')
               );
@@ -263,19 +283,7 @@ class Admin_model extends CI_model {
       $result=$this->db->get();
         return $result->result();
   }*/
-  public function teachers_show() {
-      $this->db->select('users.user_id, teacher_student_conn.student_id, users.username, COUNT(teacher_student_conn.teacher_id) AS S, users.class,
-      schools.region, users.school_id, schools.school_name');
-      $this->db->from('users');
-      $this->db->join('teacher_student_conn', 'teacher_student_conn.student_id=users.user_id','right');
-      $this->db->join('teacher_student_conn AS T', 'T.teacher_id=users.user_id','left');
-      $this->db->join('schools', 'schools.school_id=users.school_id');
-      $this->db->where('users.deactivated_at = "0000-00-00 00:00:00" || users.deactivated_at IS NULL ');
-      $this->db->where('users.role_id', '1');
-      $this->db->group_by("teacher_student_conn.student_id");
-      $result=$this->db->get();
-        return $result->result();
-  }
+ 
    /*public function teachers_show() {
      $query=("SELECT users.user_id,  users.username, COUNT(DISTINCT(teacher_student_conn.teacher_id)) AS S, users.class,
        schools.region, users.school_id,schools.school_name FROM teacher_student_conn
@@ -295,54 +303,131 @@ class Admin_model extends CI_model {
   }*/
 
   public function teachers_manage() {   
+ 
       $this->db->select('users.user_id, users.username,T.user_id AS TU,T.username AS T,teacher_id, COUNT(student_id) AS S, COUNT(DISTINCT(users.class)) AS count_classes, schools.region, T.school_id,schools.school_name');      
       $this->db->from('teacher_student_conn');      
-      $this->db->join('users', 'teacher_student_conn.student_id=users.user_id','left');
-      $this->db->join('users AS T', 'teacher_student_conn.teacher_id=T.user_id','left');
+      $this->db->join('users', 'teacher_student_conn.student_id=users.user_id');
+      $this->db->join('users AS T', 'teacher_student_conn.teacher_id=T.user_id','right');
       $this->db->join('schools', 'schools.school_id=T.school_id');    
       $this->db->where('(users.deactivated_at = "0000-00-00 00:00:00" OR users.deactivated_at IS NULL )
-        AND T.deactivated_at = "0000-00-00 00:00:00" OR T.deactivated_at IS NULL');  
-      //$this->db->where('users.role_id', '2');
+        AND (T.deactivated_at = "0000-00-00 00:00:00" OR T.deactivated_at IS NULL)');  
+      $this->db->where('T.role_id', '2');
       if($this->session->userdata('role_id')==2) {
-          $this->db->where('teacher_student_conn.teacher_id',$this->session->userdata('user_id')); 
+          $this->db->where('T.user_id',$this->session->userdata('user_id')); 
       }
-      $this->db->group_by("teacher_student_conn.teacher_id");
+      $this->db->group_by("T.user_id");
       $result=$this->db->get();
+     
         return $result->result();
         
   }
-  /*public function teachers_manage() {
-      
-      $query="SELECT users.user_id, users.username,  T.teacher_id,COUNT(DISTINCT(teacher_student_conn.student_id)) AS S,  schools.region, users.school_id,schools.school_name , 
-      
-    (SELECT users.class FROM users WHERE  teacher_student_conn.teacher_id = users.user_id ) AS count_classes
-    
-        FROM users
-         LEFT JOIN teacher_student_conn AS T ON T.student_id=users.user_id
-    LEFT JOIN teacher_student_conn ON teacher_student_conn.teacher_id=users.user_id
-    AND users.role_id = '2'
-   
-    LEFT JOIN class_divisions ON class_divisions.id=users.division
-    LEFT JOIN schools ON schools.school_id=users.school_id
-    WHERE (users.deactivated_at = '0000-00-00 00:00:00' OR users.deactivated_at IS NULL) AND users.role_id = 2 GROUP BY  users.user_id";
+  public function quaestors_show() {
+      $this->db->select('users.user_id, users.username, first_name, last_name');      
+      $this->db->from('users');      
+      //$this->db->where('users.user_id',$this->session->userdata('user_id'));
+      $this->db->where('users.role_id','2');
+      $result=$this->db->get();
+     
+        return $result->result();
+  }
 
-    $result = $this->db->query($query);
-    
-            return $result->result();
-            $query= $this->db->query('SELECT sub_u.user_id, sub_u.username,T.user_id AS TU,
-              T.username AS T,teacher_id, COUNT(student_id) AS S, (
-    SELECT COUNT(DISTINCT(class))
-    FROM teacher_student_conn AS sub_t
-    LEFT JOIN users AS sub_u
-     ON users.user_id = sub_t.teacher_id
-    WHERE sub_t.teacher_id = teacher_student_conn.teacher_id
-) AS C, schools.region, T.school_id,schools.school_name');    
+  public function add_quaestors() {
+     
+    if($this->session->userdata('role_id')==4) {
+         $submit=$this->input->post('submit');
+      $date = new DateTime("now"); 
+        if(isset($submit)&&($submit=='Добави')) {
+          if($this->input->post('class')) {
+            foreach($this->input->post('class') as $class) { 
+            if($this->input->post('class_divisions')) { 
+              foreach($this->input->post('class_divisions') as $division) {  
+              $data = array(            
+                    'school_id'=> $this->input->post('school'),
+                    'class' => $class,
+                    'class_division' => $division,
+                    'quaestor' => $this->input->post('quaestor'),
+                    'day' => $this->input->post('day'),
+                    'month' => $this->input->post('month'),
+                    'year' => $this->input->post('year'),
+                    'created_at' =>  $date->format('Y-m-d H:i:s')                       
+                );
+              
+              $this->db->insert('quaestors',$data);
+         }    
+      } 
 
+    }
+  }
+              if($this->db->affected_rows() > 0)
+              {                
+                  return true;
+              } 
+                return false;
+          
+        }
+    }   
 
-    
-            return $query->result();  
+  }
+  public function schools_show() {
+      $this->db->select('schools.school_id,schools.school_name');      
+      $this->db->from('schools');      
+     
+      $result=$this->db->get();
+     
+        return $result->result();
+  }
+  /*public function coordinators_show() {
+      $this->db->select('users.user_id, users.username, COUNT(coordinator_teacher_conn.teacher_id) AS T, coordinator_teacher_conn.coordinator_id');
+      $this->db->from('coordinator_teacher_conn');
+      $this->db->join('users', 'coordinator_teacher_conn.coordinator_id=users.user_id','left');         
+      $this->db->where('users.deactivated_at = "0000-00-00 00:00:00" || users.deactivated_at IS NULL ');
+      //$this->db->where('users.role_id', '5');  
+      if($this->session->userdata('role_id')==5) {
+          $this->db->where('users.user_id', $this->session->userdata('user_id')); 
+      }
+      $this->db->group_by('coordinator_teacher_conn.coordinator_id');    
+      $result=$this->db->get();
+          return $result->result();
   }*/
- 
+   public function coordinators_show() {
+      $this->db->select('users.user_id, users.username, COUNT(teacher_id) AS T, coordinator_teacher_conn.coordinator_id,C.user_id AS CU,C.username AS C');
+      $this->db->from('coordinator_teacher_conn');
+      
+      $this->db->join('users', 'coordinator_teacher_conn.teacher_id=users.user_id');   
+      $this->db->join('users AS C', 'coordinator_teacher_conn.coordinator_id=C.user_id','right');      
+      $this->db->where('(users.deactivated_at = "0000-00-00 00:00:00" OR users.deactivated_at IS NULL )
+        AND (C.deactivated_at = "0000-00-00 00:00:00" OR C.deactivated_at IS NULL)');  
+      $this->db->where('C.role_id', '5');  
+      if($this->session->userdata('role_id')==5) {
+          $this->db->where('C.user_id', $this->session->userdata('user_id')); 
+      }
+      $this->db->group_by('C.user_id');    
+      $result=$this->db->get();
+          return $result->result();
+    }
+
+
+  public function teachers_show() {   
+   
+      $this->db->select('users.user_id, users.username,T.user_id AS TU,T.username AS T,teacher_id, COUNT(student_id) AS S, COUNT(DISTINCT(users.class)) AS count_classes, schools.region, T.school_id,schools.school_name');      
+      $this->db->from('teacher_student_conn');      
+      $this->db->join('users ', 'teacher_student_conn.teacher_id=users.user_id');
+        $this->db->join('users AS T', 'teacher_student_conn.student_id=T.user_id','right');
+      $this->db->join('schools', 'schools.school_id=T.school_id');    
+      $this->db->where('(users.deactivated_at = "0000-00-00 00:00:00" OR users.deactivated_at IS NULL )
+        AND (T.deactivated_at = "0000-00-00 00:00:00" OR T.deactivated_at IS NULL)');  
+      $this->db->where('T.role_id', '1');
+      if($this->session->userdata('role_id')==2) {
+          $this->db->where('T.user_id',$this->session->userdata('user_id')); 
+      }
+      $this->db->group_by("T.user_id");
+      $result=$this->db->get();
+     
+      
+        return $result->result();
+        
+  }
+
   public function students_show()
   {
       $this->db->select('*');
@@ -547,19 +632,7 @@ class Admin_model extends CI_model {
           return $result->result();
   }
 
-  public function coordinators_show() {
-      $this->db->select('users.user_id, users.username, COUNT(coordinator_teacher_conn.teacher_id) AS T, coordinator_teacher_conn.coordinator_id');
-      $this->db->from('coordinator_teacher_conn');
-      $this->db->join('users', 'coordinator_teacher_conn.coordinator_id=users.user_id','left');         
-      $this->db->where('users.deactivated_at = "0000-00-00 00:00:00" || users.deactivated_at IS NULL ');
-      //$this->db->where('users.role_id', '5');  
-      if($this->session->userdata('role_id')==5) {
-          $this->db->where('users.user_id', $this->session->userdata('user_id')); 
-      }
-      $this->db->group_by('coordinator_teacher_conn.coordinator_id');    
-      $result=$this->db->get();
-          return $result->result();
-  }
+  
 
   public function deactivate_student() {
       $submit=$this->input->post('deactivate');

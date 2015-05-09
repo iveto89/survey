@@ -6,16 +6,18 @@
 <br/>
   
 <?php 
-    echo validation_errors();
+    
     echo "<div class='container'  id='container_login' >";
+
     echo "<div class='col-md-4' id='div_code' >";
-    echo form_open('home/code_check');
+   /* echo form_open('home/code_check');
     echo "<h4>Въведете Вашия код тук: </h4><br/>";
     echo "<input type='text' name='code' id='home_code' /><br/><br/>";
     echo "<input type='submit' name='code_submit' id='code_submit' value='Провери' class='btn btn-primary'/>";
-    echo form_close();
+    echo form_close();*/
     echo "</div>";
     echo "<div class='col-md-4' id='login_form' >";
+    echo validation_errors();
     echo form_open('home/login');
     echo "<table border='0'>";
     echo "<tr><td>";     
@@ -30,14 +32,19 @@
     echo "Парола: </td><td>";
     $data=array(
         'name' => 'password',
-        'id' => 'password',
+        'id' => 'password_signin',
         'class' => form_error('password') ? 'error' : ''
     );
     echo form_password($data);
     echo "</td></tr>";
     echo "</table>";  
     echo '<br/>';
-    echo form_submit(['name' => 'submit', 'value' => 'Вход', 'class' => 'btn btn-primary custom']);
+    $data=array(
+        'name' => 'submit',
+        'value' => 'Вход',
+        'class' => 'btn btn-primary custom'
+    );
+    echo form_submit($data);
     echo '<br/><br/>';
     echo form_close();
     echo "<a href='/survey/index.php/home/register' 

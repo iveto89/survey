@@ -1,0 +1,50 @@
+[23-Apr-2015 16:34:30] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/c/survey/application/views/login_form.php on line 40
+[23-Apr-2015 20:44:23] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/survey/application/views/logout.php on line 15
+[23-Apr-2015 20:46:09] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/survey/application/views/logout.php on line 22
+[23-Apr-2015 20:46:12] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/survey/application/views/logout.php on line 22
+[23-Apr-2015 20:47:08] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/survey/application/views/logout.php on line 30
+[23-Apr-2015 23:35:36] PHP Fatal error:  Call to undefined method Admin::questions() in /home/vratsad/public_html/survey/application/controllers/admin.php on line 42
+[04-May-2015 20:16:41] PHP Fatal error:  Call to undefined method User_model::answers_show() in /home/vratsad/public_html/survey/application/controllers/index.php on line 33
+[04-May-2015 20:37:57] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/survey_show.php on line 163
+[04-May-2015 20:38:12] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/survey_show.php on line 163
+[04-May-2015 20:41:13] PHP Parse error:  syntax error, unexpected ']', expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/vratsad/public_html/survey/application/views/survey_show.php on line 117
+[04-May-2015 20:41:42] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/vratsad/public_html/survey/application/views/survey_show.php on line 117
+[04-May-2015 21:15:29] PHP Fatal error:  Cannot use object of type stdClass as array in /home/vratsad/public_html/survey/application/views/register_form.php on line 304
+[04-May-2015 21:48:51] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/survey_show.php on line 164
+[05-May-2015 21:41:53] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/vratsad/public_html/survey/application/views/login_form.php on line 42
+[06-May-2015 10:41:04] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 12
+[06-May-2015 11:02:07] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 9
+[06-May-2015 11:21:57] PHP Fatal error:  Call to undefined method User_model::reject_participation() in /home/vratsad/public_html/survey/application/controllers/index.php on line 58
+[06-May-2015 11:35:08] PHP Parse error:  syntax error, unexpected '.' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 11
+[06-May-2015 11:39:49] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 13
+[06-May-2015 11:40:13] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 22
+[06-May-2015 11:57:28] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 9
+[06-May-2015 12:02:50] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 16
+[06-May-2015 12:03:42] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 18
+[06-May-2015 12:04:07] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[06-May-2015 12:07:57] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 16
+[06-May-2015 12:09:11] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 16
+[06-May-2015 12:09:16] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 16
+[06-May-2015 12:10:41] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/participation_show.php on line 44
+[06-May-2015 12:12:08] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 28
+[06-May-2015 13:02:14] PHP Parse error:  syntax error, unexpected '<' in /home/vratsad/public_html/survey/application/views/register_form.php on line 218
+[06-May-2015 22:16:41] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:16:49] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:16:56] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:17:06] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:17:10] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:17:16] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:17:16] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:17:31] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/vratsad/public_html/survey/application/views/survey_show.php on line 111
+[06-May-2015 22:40:39] PHP Fatal error:  Cannot use object of type stdClass as array in /home/vratsad/public_html/survey/application/views/survey_show.php on line 116
+[06-May-2015 23:06:51] PHP Parse error:  syntax error, unexpected ';' in /home/vratsad/public_html/survey/application/views/register_form.php on line 250
+[06-May-2015 23:58:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[06-May-2015 23:58:46] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[06-May-2015 23:58:49] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[06-May-2015 23:58:51] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[06-May-2015 23:59:08] PHP Parse error:  syntax error, unexpected '}' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 50
+[07-May-2015 00:05:22] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[07-May-2015 00:05:35] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[07-May-2015 00:05:40] PHP Parse error:  syntax error, unexpected T_ELSE in /home/vratsad/public_html/survey/application/views/participation_show.php on line 39
+[07-May-2015 00:05:57] PHP Parse error:  syntax error, unexpected '}' in /home/vratsad/public_html/survey/application/views/participation_show.php on line 50
+[07-May-2015 00:24:23] PHP Parse error:  syntax error, unexpected $end in /home/vratsad/public_html/survey/application/views/participation_show.php on line 59

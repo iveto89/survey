@@ -17,6 +17,7 @@ $(document).ready(function() {
         "pagingType": "full_numbers",
 
         "language": {
+"emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -34,7 +35,7 @@ $(document).ready(function() {
     
 		"aButtons": [
 		
-		{
+		/*{
 			"sExtends": "csv",
       		"sFileName": 'download.csv',
       		"sFieldSeperator": "," 
@@ -45,7 +46,7 @@ $(document).ready(function() {
 		"sExtends": "pdf",
 		"sButtonText": "Print PDF"
 		
-		},
+		},*/
 
 		"xls"
 		
@@ -63,6 +64,15 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#example2').dataTable( {
         "pagingType": "full_numbers",
+ "language": {
+    "paginate": {
+      "previous": "Предишна",
+      "next": "Следваща",
+      "last": "Последна",
+      "first": "Първа"
+
+    }
+  },
          "bSort": true,
          "sDom": 'T<"clear">lfrtip',
 	     "tableTools": {
@@ -70,7 +80,7 @@ $(document).ready(function() {
     
 		"aButtons": [
 		
-		{
+		/*{
 			"sExtends": "csv",
       		"sFileName": 'download.csv',
       		"sFieldSeperator": "," 
@@ -80,7 +90,7 @@ $(document).ready(function() {
 		{
 		"sExtends": "pdf",
 		"sButtonText": "Print PDF"
-		},
+		},*/
 
 		"xls"
 		
@@ -132,29 +142,53 @@ $(document).ready(function() {
         } );
     } );
 } );
+$(document).ready(function(){
+   
+    $(".DTTT_container a").addClass("btn btn-info");
+    
+});
 </script>
 
 </head>
 <body>
+
 <div class='col-md-8' id='student_results'>
 
 <table  id='example'>
  
  <thead>
-    <tr><th>Потребител</th><th>Училище</th><th>Клас</th><th>Анкета</th><th>Въпрос</th><th>Отговор</th></tr>
+    <tr><th>Имена</th><th>Потребител</th><th>Идент.№</th> <th>Населено място</th><th>Училище</th><th>Клас</th><th>Пол</th><th>Дата на раждане</th><th>Майчин език</th><th>Анкета</th><th>Въпрос</th><th>Отговор</th>
+    <th>Код</th><th>Тип въпрос</th> <th>Преизчислено</th><th>Скала</th><th>Емоц. компонент</th><th>Ем. опит</th>
+    <th>Време</th><th>Емоции</th><th>Дата</th></tr>
   </thead>  
  <thead class="filters">   
-    <tr><td>Потребител</td><td>Училище</td><td>Клас</td><td>Анкета</td><td>Въпрос</td><td>Отговор</td></tr>
+    <tr><td>Имена</td><td>Потребител</td><td>Идент.№</td> <td>Населено място</td><td>Училище</td><td>Клас</td><td>Пол</td><td>Дата на раждане</td><td>Майчин език</td><td>Анкета</td><td>Въпрос</td><td>Отговор</td>
+    <td>Код</td><td>Тип въпрос</td> <td>Преизчислено</td><td>Скала</td><td>Емоц. компонент</td><td>Ем. опит</td><td>Време</td><td>Емоции</td><td>Дата</td></tr>
    </thead> 
 
   <tfoot>
       <tr>
+          <th>Имена</th>
           <th>Потребител</th>
+          <th>Идент.№</th>
+          <th>Населено място</th>
           <th>Училище</th>
           <th>Клас</th>
+          <th>Пол</th>
+          <th>Дата на раждане</th>
+          <th>Майчин език</th>
           <th>Анкета</th>
           <th>Въпрос</th>
           <th>Отговор</th>
+          <th>Код</th>
+          <th>Тип въпрос</th>
+          <th>Преизчислено</th>
+          <th>Скала</th>
+          <th>Емоц. компонент</th>
+          <th>Ем. опит</th>
+          <th>Време</th>
+          <th>Емоции</th>
+          <th>Дата</th>
       </tr>
   </tfoot> 
   <tbody>
@@ -165,18 +199,53 @@ foreach ($student_results as $row)
 {
 
 ?>
-	<tr><td>
-	<?php echo $row->username; ?>
+       <tr><td>
+  
+       <?php echo $row->first_name . "&nbsp;" . $row->last_name; ?>
+  	</td><td>
+	 <?php echo $row->username; ?>
+        </td><td>
+	<?php echo $row->user_id; ?>
+	</td><td>
+        <?php echo $row->location; ?>
 	</td><td>
 	<?php echo $row->school_name; ?>
+	 </td><td>
+	 <?php echo $row->class; echo $row->division; ?>
+        </td><td>
+	 <?php echo $row->gender; ?>
+        </td><td>
+	<?php echo $row->birth_day. "&nbsp;" .$row->birth_month. "&nbsp;" .$row->birth_year; ?>
+         </td><td>
+	<?php echo $row->ethnic_origin; ?>
 	</td><td>
-	<?php echo $row->class; ?>
-	</td><td>
-	<?php echo $row->survey_id; ?>
+	<?php echo $row->survey_name; ?>
   	</td><td>
-  	<?php echo $row->question_id; ?>
+  	<?php echo $row->question; ?>
   	</td><td>
   	<?php echo $row->answer; ?>
+    </td><td>
+    
+    <?php if($row->code == 0) { echo "";} else { echo $row->code; } ?>
+    </td><td>
+    
+    <?php if($row->is_reverse == 0) { echo "Прав"; } else { echo "Обърнат"; } ?>
+    </td><td>
+    <?php if($row->is_reverse == 1) { echo 6 - $row->answer; } ?>
+    </td><td>
+    <?php echo $row->scale; ?>
+    </td><td>
+    <?php echo $row->emotion_component; ?>
+    </td><td>
+    <?php echo $row->c_emotional_experience; ?>
+    </td><td>
+   
+    <?php if($row->time == 0) { echo ""; } elseif($row->time == 1) { echo "Before"; }
+    elseif($row->time == 2) { echo "During"; } elseif($row->time == 3) { echo "After"; } ?>
+    </td><td>
+    <?php echo $row->emotions; ?>
+      </td><td>
+    <?php echo $row->created_at; ?>
   	</td></tr>
   	<?php 
  }

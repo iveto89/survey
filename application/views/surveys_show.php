@@ -52,13 +52,26 @@
 $survey_id = $this->uri->segment(3);
 
 	echo "<div class='col-md-10' id='survey_manage'>";
+$this->load->library('session');
+$added_question = $this->session->flashdata('added_question'); 
+if($added_question){
+echo "<div id='quaestors'>$added_question </div>";
+} 
+$removed_question = $this->session->flashdata('removed_question'); 
+if($removed_question){
+echo "<div id='quaestors'>$removed_question </div>";
+} 
+$restored_question = $this->session->flashdata('restored_question');
+if($restored_question){
+echo "<div id='quaestors'>$restored_question </div>";
+} 
+echo "<br/><br/>";
 
-?>
 
-<?php
 $name=$survey_name; ?>
 <h3> <?php echo $name['survey_name']; ?> </h3><br/>
 <?php
+
 echo "<table border='0'>";   
 echo validation_errors();
 
@@ -74,8 +87,13 @@ foreach ($survey as $row)
 	echo "<td rowspan='2' class='col-md-1'>";
 	echo '<a href="/survey/index.php/index/edit_question/' . $row->survey_id . '/' . $row->question_id . '", class = "btn btn-success"> Промени </a>';
 	echo "</td><td class='col-md-1'>";
-	echo '<input type="submit" name="deactivate" value="Изтрий"   class="btn btn-danger" 
-    onclick="return confirm(\'Сигурни ли сте, че искате да изтриете въпроса?\'); ">';
+	if ($row->deactivated_at == '0000-00-00 00:00:00' || empty($row->deactivated_at) ) {
+	echo '<input type="submit" name="deactivate" value="Премахни"   class="btn btn-danger" 
+    onclick="return confirm(\'Сигурни ли сте, че искате да премахнете въпроса?\'); ">';
+	} else  {
+		echo '<input type="submit" name="restore" value="Възстанови"   class="btn btn-info" 
+    onclick="return confirm(\'Сигурни ли сте, че искате да възстановите въпроса?\'); ">';
+	}
 	echo "</td></tr><tr><td>";  
 	echo form_close();
 	$data=array(
@@ -103,26 +121,26 @@ foreach ($survey as $row)
 		'value' => '2'
 	);
 	echo form_radio($data);
-	echo " 3 ";
+	echo " 2 ";
 	$data=array(
 		'name' => 'answer['.$row->question_id.']',
 		'value' => '1'
 	);
 	echo form_radio($data);
 	echo " Изобщо не съм доволен ";
-	echo "</td></tr>";
+	echo "</td></tr><tr><td></td></tr><tr><td></td></tr>";
   
 }
 	
     echo "</table>";
 	
-	$data=array(
+	/*$data=array(
 		'name' => 'submit',
 		'value' => 'Изпрати',
 		'class' => 'btn btn-primary',
 		 'id' => 'survey_submit'
 	);
-	echo form_submit($data);
+	echo form_submit($data);*/
 	echo form_close();
 
 	echo form_open('admin/add_questions/' .$survey_id);

@@ -6,7 +6,7 @@
 <div class='col-md-7'>
 <br/><br/>
 <table border = '1' class = 'table table-striped'>
-<tr><th>Въпрос</th><th>Група</th><th>Тип въпрос</th><th>Промени</th></tr>
+<tr><th>Въпрос</th><th>Тип въпрос</th><th>Промени</th></tr> 
 <?php
 $survey_id = $this->uri->segment(3);
 $id = $this->uri->segment(4);
@@ -22,7 +22,7 @@ foreach($select_question as $row)
   );
   echo form_input($data); 
   echo "</td>";
-  echo "<td class='col-md-2'>";
+  /*echo "<td class='col-md-2'>";
   
 ?>
 
@@ -44,7 +44,7 @@ foreach($groups_show as $group)
 
 echo "</select>";
 
-echo "</td>";
+echo "</td>";*/
 echo "<td class='col-md-2'>";
   
 ?>

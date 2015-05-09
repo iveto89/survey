@@ -10,14 +10,31 @@
             <br/>
 
 <?php 
+    echo "<div class='col-md-6' id='logout_form'>";
     echo validation_errors();
+    echo "</div>";
     echo form_open('home/login_show');
-    echo form_input(['name' => 'username', 'placeholder' => 'Потребителско име', 'id' => 'user_login',
-          'class' => 'echo (form_error("username") ? "error" : "") ']);
-    echo form_password(['name' => 'password', 'placeholder' => 'Парола', 'id' => 'password_login',
-         'class' => 'echo (form_error("username") ? "error" : "") ']);
+$data=array(
+'name' => 'username', 
+'placeholder' => 'Потребителско име', 
+'id' => 'user_login',
+  'class' => form_error("username") ? "error" : ""
+);
+    echo form_input($data);
+$data=array(
+'name' => 'password', 
+'placeholder' => 'Парола', 
+'id' => 'password_login',
+ 'class' => form_error("username") ? "error" : ""
+);
+    echo form_password($data);
     echo '<br/><br/>';
-    echo form_submit(['name' => 'submit', 'value' => 'Вход', 'class' => 'btn btn-primary login_custom']);
+$data=array(
+'name' => 'submit', 
+'value' => 'Вход', 
+'class' => 'btn btn-primary login_custom'
+);
+    echo form_submit($data);
     echo "</div>";
    
     echo "</body>";

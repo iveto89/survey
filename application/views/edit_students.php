@@ -6,7 +6,6 @@
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 
-<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js">
 <script src="../../media/js/dataTables.editor.min.js"></script>
 
 <script>
@@ -31,6 +30,44 @@ $(document).ready(function() {
 		] 
 	},
    "language": {
+     "emptyTable": "Няма данни",
+    "paginate": {
+      "previous": "Предишна",
+      "next": "Следваща",
+      "last": "Последна",
+      "first": "Първа"
+
+    }
+  }
+
+
+    } );
+} );
+
+</script>
+<script>
+$(document).ready(function() {
+    $('#example2').dataTable( {
+        "pagingType": "full_numbers",
+         "bSort": true,
+         "sDom": 'T<"clear">lfrtip',
+       
+          "tableTools": {
+    "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf",
+    "aButtons": [
+    "csv",
+    
+    {
+    "sExtends": "pdf",
+    "sButtonText": "Print PDF",
+    "mColumns": "visible"
+    },
+    "xls"
+
+    ] 
+  },
+   "language": {
+     "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -99,12 +136,23 @@ table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTabl
 $teacher_id = $this->uri->segment(3);
 $school_id = $this->uri->segment(4);
 
+$this->load->library('session');
+$deactivated_students = $this->session->flashdata('deactivated_students'); 
+if($deactivated_students){
+echo "<div id='quaestors'>$deactivated_students </div>";
+} 
+$added_students = $this->session->flashdata('added_students'); 
+if($added_students){
+echo "<div id='quaestors'>$added_students </div>";
+} 
+echo "<br/><br/>";
+
 foreach($teacher_name as $name) 
 {
 ?>
 <h3>Учител: <?php echo $name->first_name . " "; echo $name->last_name;?></h3>
-<br/><br/>
-
+<br/>
+<h3 id='added_users'>Добавени ученици</h3><br/><br/> <h3 id='other_users'>Други ученици</h3><br/><br/> 
 <?php
 }
 
@@ -155,14 +203,17 @@ foreach($select_teachers_students as $select)
       }     
 ?>
 
-</table>
-<input type="submit" name="change" value="Изтрий ученици" class="btn btn-danger" />
+</table><br/>
+<input type="submit" name="change" id="delete_users" value="Изтрий ученици" class="btn btn-danger" />
 </form>
   </div>
+
 <div style="width: 40%; float: left; margin-left:60px;">
+
 <?php 
 echo form_open('admin/add_students/'.$teacher_id .'/' .$school_id);  
 ?>
+
 <table id="example2" class="display" >
    <thead>
     <tr>
@@ -189,11 +240,12 @@ foreach($select_students as $student)
 {
  
 ?>
-  
+
     <tr>
 
     <td class='col-md-1'>
-    <input type="checkbox" name="teacher[]"   value="<?php echo $student->user_id; ?>"  />
+    <input type="checkbox" name="student[]"   value="<?php echo $student->user_id; ?>"  />
+
     <?php echo $student->username; ?>
 </td><td class='col-md-1'>
 
@@ -205,8 +257,8 @@ foreach($select_students as $student)
       }     
 ?>
 </tbody>
-</table>
-<input type="submit" name="add" value="Добави ученици" class="btn btn-success" />
+</table></br>
+<input type="submit" name="add" id="add_users" value="Добави ученици" class="btn btn-success" />
 </form>
 </div>
 </div>

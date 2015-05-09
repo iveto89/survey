@@ -37,6 +37,7 @@ $(document).ready(function() {
 		] 
 	},
  "language": {
+ "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -98,6 +99,13 @@ $(document).ready(function() {
 <h3>Управление на учители</h3>
 <br/><br/>
 <?php
+$this->load->library('session');
+$deactivated_teacher = $this->session->flashdata('deactivated_teacher'); 
+if($deactivated_teacher){
+echo "<div id='quaestors'>$deactivated_teacher </div>";
+} 
+echo "<br/><br/>";
+
 echo validation_errors();
  
 ?>
@@ -145,7 +153,7 @@ foreach ($teachers_show as $teacher)
   <tr>
   <td>
   <?php echo $teacher->T; 
-  echo "<input type='hidden' name='teacher' value='$teacher->user_id' />";
+  //echo "<input type='hidden' name='teacher' value='$teacher->user_id' />";
    ?>
    </td><td>
    <?php echo $teacher->school_name; ?>
@@ -160,7 +168,7 @@ foreach ($teachers_show as $teacher)
     </td><td>
     <?php
     echo form_open('admin/deactivate_teacher');  
-   echo "<input type='hidden' name='teacher' value='$teacher->teacher_id' />";
+   echo "<input type='hidden' name='teacher' value='$teacher->TU' />";
    echo '<input type="submit" name="deactivate" value="Изтрий" id="change_coord" class="btn btn-danger" onclick="return confirm(\'Сигурни ли сте, че искате да изтриете учителя?\'); " />';
     ?>
     </td></tr>

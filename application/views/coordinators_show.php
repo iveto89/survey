@@ -6,7 +6,7 @@
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 
-<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js">
+<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 <script src="../../media/js/dataTables.editor.min.js"></script>
 
 <script>
@@ -30,6 +30,7 @@ $(document).ready(function() {
 		] 
 	},
    "language": {
+ "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -70,6 +71,12 @@ $(document).ready(function() {
 <h3>Управление на координатори</h3>
 <br/><br/>
 <?php
+$this->load->library('session');
+$deactivated_coord = $this->session->flashdata('deactivated_coord'); 
+if($deactivated_coord){
+echo "<div id='quaestors'>$deactivated_coord </div>";
+} 
+echo "<br/><br/>";
 
 echo validation_errors();
 ?>
@@ -103,18 +110,18 @@ foreach ($coordinators_show as $coordinator)
 <td>
 <?php 
 echo form_open('admin/deactivate_coordinator'); 
-echo $coordinator->username; 
-echo "<input type='hidden' name='coordinator' value='$coordinator->user_id' />";
+echo $coordinator->C; 
+echo "<input type='hidden' name='coordinator' value='$coordinator->CU' />";
 ?>
 </td><td>
 <?php echo $coordinator->T; ?>
 
 </td><td>
-  <?php echo '<a href="/survey/index.php/admin/edit_coordinators/' . $coordinator->user_id .'", class = "btn btn-success"> Промени </a>'; ?>
+  <?php echo '<a href="/survey/index.php/admin/edit_coordinators/' . $coordinator->CU .'", class = "btn btn-success"> Промени </a>'; ?>
 </td><td>
 <?php
 
-echo "<input type='hidden' name='coordinator' value='$coordinator->user_id' />";
+echo "<input type='hidden' name='coordinator' value='$coordinator->CU' />";
 echo '<input type="submit" name="deactivate" value="Изтрий" id="change_coord" class="btn btn-danger" onclick="return confirm(\'Сигурни ли сте, че искате да изтриете координатора?\'); " />';
 ?>
 </td></tr>  

@@ -6,7 +6,6 @@
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
 
-<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js">
 <script src="../../media/js/dataTables.editor.min.js"></script>
 
 <script>
@@ -31,6 +30,44 @@ $(document).ready(function() {
 		] 
 	},
    "language": {
+     "emptyTable": "Няма данни",
+    "paginate": {
+      "previous": "Предишна",
+      "next": "Следваща",
+      "last": "Последна",
+      "first": "Първа"
+
+    }
+  }
+
+
+    } );
+} );
+
+</script>
+<script>
+$(document).ready(function() {
+    $('#example2').dataTable( {
+        "pagingType": "full_numbers",
+         "bSort": true,
+         "sDom": 'T<"clear">lfrtip',
+       
+          "tableTools": {
+    "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf",
+    "aButtons": [
+    "csv",
+    
+    {
+    "sExtends": "pdf",
+    "sButtonText": "Print PDF",
+    "mColumns": "visible"
+    },
+    "xls"
+
+    ] 
+  },
+   "language": {
+     "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -137,12 +174,23 @@ table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTabl
 $student_id = $this->uri->segment(3);
 $school_id = $this->uri->segment(4);
 
+$deleted_teachers = $this->session->flashdata('deleted_teachers'); 
+if($deleted_teachers){
+echo "<div id='quaestors'>$deleted_teachers </div>";
+} 
+
+$added_teachers = $this->session->flashdata('added_teachers'); 
+if($added_teachers){
+echo "<div id='quaestors'>$added_teachers </div>";
+} 
+echo "<br/><br/>";
+
 foreach($teacher_name as $name) 
 {
 ?>
 <h3>Ученик: <?php echo $name->first_name . " "; echo $name->last_name;?></h3>
-<br/><br/>
-
+<br/>
+<h3 id='added_users'>Добавени учители</h3><br/><br/> <h3 id='other_users'>Други учители</h3><br/><br/> 
 <?php
 }
 
@@ -189,7 +237,7 @@ foreach($select_teachers_students as $select)
 
 </table>
 <br/>
-<input type="submit" name="change" id="delete_teachers" value="Изтрий учители" class="btn btn-danger" />
+<input type="submit" name="change" id="delete_users" value="Изтрий учители" class="btn btn-danger" />
 </form>
   </div>
 <div style="width: 40%; float: left; margin-left:60px;">
@@ -231,7 +279,7 @@ foreach($select_teachers as $T)
 </tbody>
 </table>
 <br/>
-<input type="submit" name="add" id="add_teachers" value="Добави учители" class="btn btn-success" />
+<input type="submit" name="add" id="add_users" value="Добави учители" class="btn btn-success" />
 </form>
 </div>
 </div>

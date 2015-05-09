@@ -13,6 +13,7 @@
 $(document).ready(function() {
     $('#example').dataTable( {
         "pagingType": "full_numbers",
+
          "bSort": true,
          "sDom": 'T<"clear">lfrtip',
        
@@ -31,6 +32,7 @@ $(document).ready(function() {
 		] 
 	},
    "language": {
+     "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -96,12 +98,24 @@ table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTabl
 <?php  
 $coordinator_id = $this->uri->segment(3);
 
+$this->load->library('session');
+$deactivated_teachers = $this->session->flashdata('deactivated_teachers'); 
+if($deactivated_teachers){
+echo "<div id='quaestors'>$deactivated_teachers </div>";
+} 
+
+$added_teachers = $this->session->flashdata('added_teachers'); 
+if($added_teachers){
+echo "<div id='quaestors'>$added_teachers </div>";
+} 
+echo "<br/><br/>";
+
 foreach($teacher_name as $name) 
 {
 ?>
 <h3>Учител: <?php echo $name->first_name . " "; echo $name->last_name;?></h3>
-<br/><br/>
-
+<br/>
+<h3 id='added_users'>Добавени учители</h3><br/><br/> <h3 id='other_users'>Други учители</h3><br/><br/> 
 <?php
 }
 

@@ -30,6 +30,7 @@ $(document).ready(function() {
 		] 
 	},
    "language": {
+ "emptyTable": "Няма данни",
     "paginate": {
       "previous": "Предишна",
       "next": "Следваща",
@@ -89,6 +90,13 @@ $(document).ready(function() {
 <h3>Управление на ученици</h3>
 <br/><br/>
 <?php
+$this->load->library('session');
+$deactivated_student = $this->session->flashdata('deactivated_student'); 
+if($deactivated_student){
+echo "<div id='quaestors'>$deactivated_student </div>";
+} 
+echo "<br/><br/>";
+
 echo validation_errors();
  
 ?>
@@ -126,7 +134,7 @@ foreach($teachers_show as $teacher)
 ?>
     <tr><td class='col-md-2'>
     <?php
-     echo $teacher->username; 
+     echo $teacher->T; 
      echo "<input type='hidden' name='student' value='$teacher->user_id' />";
     
 ?>   
@@ -136,7 +144,7 @@ foreach($teachers_show as $teacher)
     </td>
 
     <td class='col-md-1'>
-    <?php echo '<a href="/survey/index.php/admin/edit_teachers/' . $teacher->user_id .'/'. $teacher->school_id .'", class = "btn btn-success"> Промени </a>'; ?>
+    <?php echo '<a href="/survey/index.php/admin/edit_teachers/' . $teacher->TU .'/'. $teacher->school_id .'", class = "btn btn-success"> Промени </a>'; ?>
     </td><td>
  <?php  
 

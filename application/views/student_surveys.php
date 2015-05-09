@@ -3,9 +3,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
         $(document).ready(function() {
-            $('#teacher').change(function() {
+            $('#select_teacher').change(function() {
                 var url = "<?= base_url() ?>index.php/index/get_subjects";
-                var postdata = {teacher: $('#teacher').val()};
+                var postdata = {teacher: $('#select_teacher').val()};
                 $.post(url, postdata, function(result) {
                     var $subject_sel = $('#subject');
                     $subject_sel.empty();
@@ -23,42 +23,104 @@
 </head>
 
 <body>
-<br/><br/>
-<div class='col-md-6' id='student_surveys'>
 <br/>
+<div class='col-md-9' id='student_surveys'>
+
 <?php
 
-$survey_id = $this->uri->segment(3);
-echo validation_errors();
+$survey_id = $this->uri->segment(3); 
 
+if (!$this->session->userdata('survey')) { 
+
+
+if($this->uri->segment(3) == 1) { ?>
+<div id='instructions'>
+Защо ходиш на училище? <br/>
+В този въпросник трябва да оцениш причините, заради които ходиш на училище. Използвай скалата под всяко твърдение, за да оцениш дали си съгласен(а) с него. С най-ниската оценка (1) оцени причините да си в училище, с които въобще не си съгласен или въобще не си съгласна, а с най-високата оценка (5) - причините да си в училище, с които си напълно съгласен (а). Можеш да използваш и останалите оценки между 1 и 5, ако твърденията отразяват донякъде твоите причини, но ти не си напълно съгласен (а) с тях. Разгледай възможните оценки внимателно и използвай само една от тях за всяко от твърденията. <br/>
+1-  Въобще не съм съгласен (а). Това въобще не е причина за мен да ходя на училище. <br/>
+2 - Не съм съгласен (а). Това не е причина за мен да съм в училище. <br/>
+3 - И съм съгласен (а), и не съм. Това донякъде е причина да съм в училище, но тя не е много важна за мен.  <br/>
+4 – Съгласен (а) съм. Това е причина да съм в училище. <br/>
+5 - Напълно съм съгласен (а). Това е една от причините да съм в училище. 
+
+</div>
+<?php } 
+if($this->uri->segment(3) == 2) { ?>
+<div id='instructions'>
+Твърденията в този въпросник отразяват конкретни нагласи, мисли и стратегии за учене на учениците по този предмет. Използвай скалата под всяко твърдение, за да оцениш дали твърдението е вярно за теб.  С най-ниската оценка (1) оцени твърденията, които въобще не са верни за теб, а с най-високата (5) - твърденията, които вярно описват начина, по който учиш и мислиш за този предмет. Можеш да използваш и останалите оценки между 1 и 5, ако твърденията се отнасят донякъде за теб, но не напълно: <br/>
+1 - въобще не е вярно за мен <br/>
+2 - не  е вярно за мен <br/>
+3 - колкото е вярно, толкова и не е <br/>
+4 - вярно е <br/>
+5 - много е вярно  <br/>
+
+Тук няма правилни и грешни отговори. Важно е да отбележиш онзи отговор, който е верен за теб и добре описва твоите собствени мисли, отношение и начин на учене по този предмет.
+ 
+
+</div>
+<?php }
+if($this->uri->segment(3) == 3) { ?>
+<div id='instructions3'>
+<b> Усещания и мисли за училищните преживявания 
+- Въпросник за емоции, породени от ученето    </b><br/><br/>
+
+Този въпросник пита за нещата, които мислиш и чувстваш, откакто си в училище. Няма правилни или грешни отговори. Важни са твоите чувства и мисли за нещата, които ти се случват в училище. Интересува ни твоето лично мнение. Твоята самоличност (твоите лични данни) и отговори ще бъдат запазени в тайна. Информацията ще се използва само с научна цел и няма да се разпространява. 
+Въпросникът се състои от 155 твърдения, подредени в две части. В ЧАСТ I ще отговаряш дали твърденията се отнасят за теб, докато си в часовете по този предмет. В ЧАСТ II  ще отговаряш дали твърденията се отнасят за теб, докато учиш и се подготвяш по този предмет. 
+Твърденията ще се представят едно по едно на екрана, заедно със скалата за оценка. Ако те отговарят на чувствата, които изпитваш, натисни бутона под най-високата оценка в скалата (5).  Ако твърденията въобще не отговарят на твоите чувства, натисни бутона под най-ниската оценка (1). Може да използваш и останалите оценки между 1 и 5, ако твърденията не отговарят напълно на твоите чувства, мисли и преживявания, но се е случвало да чувстваш и мислиш такива неща. <br/>
+Твоето участие в проучването е важно за неговия успех и ние високо оценяваме времето, което отделяш, за да попълниш въпросника. <br/><br/>
+
+Благодарим ти за подкрепата! 
+
+</div>
+<?php }
+?>
+<br/>
+<?php
+echo validation_errors();
+echo "<div class='col-md-10'>";
 echo form_open('index/student_surveys/' . $survey_id);
 echo "<table border = '0' class='table table-striped'>";
-echo "<tr><th>Учител</th><th>Предмет</th><th>Код</th>";
-echo "<tr><td class='col-md-3'>";
+echo "<tr id='thead_teacher_subject'><th>Учител</th><th>Предмет</th><th>Място на попълване</th>"; //<th>Код</th>
+echo "<tr><td id='add_teacher_subject1' class='col-md-1'>";
   
-echo '<select id="teacher" name="teacher">';
+echo '<select id="select_teacher" name="teacher">';
 echo '<option>Моля изберете учител</option>';
 foreach ($teachers as $row) { ?>
-    <option value= "<?= $row->teacher_id ?>"><?= $row->username ?></option>
+     <option value= "<?= $row->teacher_id ?>"><?php echo $row->first_name . "&nbsp;" . $row->last_name; ?></option>
 <?php } 
 echo '</select>';
-echo "</td><td class='col-md-3'>";
+echo "</td><td  class='col-md-2'>";
   
 echo '<select id="subject" name="subject">';
 echo '<option>Моля изберете учител</option>'; 
 echo '</select>';
-echo "</td><td class='col-md-3'>";
+
+echo '</td><td class="col-md-5">';
+  
+echo '<select  id="subject" name="location_filling">';
+echo '<option value="">Моля изберете място на попълване</option>'; 
+echo '<option value="На училище">На училище</option>'; 
+echo '<option value="Вкъщи">Вкъщи</option>'; 
+echo '</select>';
+echo '</td>';
+//echo "</td><td class='col-md-3'>";
 $code=random_string();
-echo $code;
+//echo $code;
 ?>
 <input type='hidden' name='random_code' value=<?php echo $code; ?> >
 <?php
 echo "</td></tr>";
 echo "</table>";
+echo '<input type="submit" name="submit" value="Изпрати" class="btn btn-success" id="student_surveys_submit" />
+';
+echo "</div><br/><br/>";
+
+} else {
+    redirect('index/survey3_show');
+}
 
 ?>
 
-<input type="submit" name="submit" value="Изпрати" class="btn btn-success" id="student_surveys_submit" />
 
 </form>
 
