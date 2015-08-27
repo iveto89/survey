@@ -44,7 +44,7 @@ th {
   margin-left: 50px;
 }
 #buttons {
-  margin-left: 36%;
+  margin-left: 15%;
 }
 #question {
   width: 600px;  
@@ -123,10 +123,6 @@ span.total-votes {
   margin-left: 160px;
   width: 100px;
   padding: 6px 6px;
-}
-#reg {
-  padding: 6px 6px;
-  margin-left:300px;
 }
 
 #user_login {
@@ -211,14 +207,18 @@ span.total-votes {
   float: left;
   margin-right: 60px;  
 }
+
+
 .vertical {
-  width: 25px;
+  width: 30px;
   height: 200px !important;
-  margin-left: 150px;
+ 
+
   position: relative;
 }
 .vertical .bar {
   width: 100% !important;
+
   position: absolute;
   bottom: 0;
   border-bottom-left-radius: inherit;
@@ -238,8 +238,11 @@ span.total-votes {
 .progress.vertical .progress-bar {
   width: 100%;
   height: 0;
+ /* padding-top: 130%;*/
+  font-size:9px !important;
   .transition(height .6s ease);
 }
+
 
 .progress.vertical.bottom .progress-bar {
   position: absolute;
@@ -274,6 +277,10 @@ span.total-votes {
   margin-left: 50%;
   font-weight: bold;
 }
+#average1 {
+  margin-left: 8%;
+  font-weight: bold;
+}
 #show_error {
   margin-left: 25%;
 }
@@ -305,7 +312,10 @@ input[type=radio] {
 #average_tab1 {
    font-weight: bold;
 }
-.meow { width: 350px; height: 300px; display: block; float: left; background: #FFFF99; border: 1px solid #000; }
+.meow { width: 350px; height: 400px; display: block; float: left; 
+  background: #FFFF99; border: 1px solid #000; }
+.student_div { width: 400px; height: 400px; display: block; 
+  float: left; background: #FFFF99; border: 1px solid #000; }
 .clearfix { clear: both }
 .contain { margin-left: 150px; }
 #pagination {
@@ -334,7 +344,7 @@ thead {
 }
 
 #table2 {
-  margin-left:20%;
+  margin-left:15%;
 }
 #student_surveys {
   margin-left:130px;
@@ -368,7 +378,7 @@ thead input {
 }
 
 #teacher_student_show {
-  margin-left:20%;
+  margin-left:40px;
 }
 
 #teachers_show {
@@ -376,7 +386,7 @@ thead input {
  
 }
 #coord_show {
-  margin-left: 7%; 
+  margin-left: 30px; 
 }
 
 #add_users {
@@ -427,6 +437,10 @@ thead input {
   margin-left: 20px;
   font-size: 16px !important;
 }
+#location_filling {
+  margin-left: 20px;
+  font-size: 16px !important;
+}
 #instructions3 {
   text-align: center;
 
@@ -449,9 +463,7 @@ thead input {
 #logos {
   display: inline;
 }
-#zaednovchas_logo {
-  margin-left: 20%;
-}
+
 #survey3 {
   margin-left: 25%;
   margin-top: -1%;
@@ -555,4 +567,162 @@ select {
 }
 #quaestors {
   font-size: 16px !important;
+  padding-bottom: 10px;
+}
+#survey_submit {
+  margin-left: 45%;
+}
+#surveys_manage {
+    margin-left: 30%;
+}
+#validation_errors {
+  color: red;
+}
+.valid_errors{
+    color: red;
+    border: 0px !important;
+    padding-bottom: 10px;
+}
+#min_symbols {
+   font-size: 12px !important;
+}
+#sub_title {
+  font-size: 24px !important;
+  width: 90%;
+  position: absolute;
+  text-align: center;
+}
+#footer {
+  background: #E5E5E5;
+  color: #005695 !important;
+  text-align: center !important;
+  padding: 40px 0px;
+  height: 220px;
+
+}
+#project_wrapper a {
+ color: #005695 !important;
+
+}
+.logo {
+  margin-top: -30px !important;
+
+}
+.project_info {
+  text-align: left; 
+}
+.project_p, .project_p a {
+  margin: 0px 0px 9px  !important;
+  font-weight: 600 !important;
+  } 
+.project_logo {
+  margin: 0px 0px 9px  !important;
+  text-align: center;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  display: block !important;
+}
+#project_wrapper {
+  margin-left: auto;
+  padding-left: 80px !important;
+  padding-right: 15px !important;
+  margin-right: auto;
+  padding: 50px 0px;
+  font: 13px "Trebuchet MS",arial,sans-serif;
+
+}
+#footer_wrapper {
+  display: block !important;
+}
+
+#eeagrants {
+  padding-left: 80px !important;
+}
+#zaednovchas {
+  color: #999 !important;
+  text-align: center !important;
+  height: 220px;
+  padding: 0px 0px 43px 80px ;
+  font-family: "Trebuchet MS",arial,sans-serif;
+  font-size: 13px;
+}
+#teach_text {
+  font-style: italic;
+} 
+.fa-2x {
+  font-size: 2em;
+}
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  color: #787878 !important;
+}
+.col-md-3 {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#social_links {
+  display: inline-block;
+  padding-left: 10px;
+  padding-top: 5px;
+  font-family: "Trebuchet MS",arial,sans-serif;
+  font-size: 13px;
+
+}
+.teach_info {
+  text-align: left;
+}
+#teach_title {
+  font-weight: bold !important;
+  color: #000;
+}
+
+body {
+  font-size: 16px !important;
+  font-family: Georgia,"Times New Roman",Times,serif;
+  color: #787878;
+ 
+}
+#encoding_results {
+  float: left;
+  margin-left: 25px;
+  display: inline-block;
+}
+#encoding_button {
+  float: left;
+  display: inline-block;
+}
+#encoding_link
+{
+  background-color:transparent !important;
+}
+.paginate_button {
+  font-size: 12px !important;
+}
+.center { text-align: center; }
+#add_survey {
+  margin-left: 30px;
+}
+#survey_add {
+  border: 1px solid #CCC;
+  width: 420px;
+  height: 100px;
+  padding: 25px;
+  border-radius: 5px;
+}
+/* Not uploaded in Vratsad */
+
+.msg_error {
+  font-size: 14px !important;
+  color: #d9534f;
+}
+
+.border_error {
+  border: 1px solid #d9534f !important;
 }

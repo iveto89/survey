@@ -4,7 +4,7 @@
 <script>
         $(document).ready(function() {
             $('#select_teacher').change(function() {
-                var url = "<?= base_url() ?>index.php/index/get_subjects";
+                var url = "<?= base_url() ?>index.php/survey_show/get_subjects";
                 var postdata = {teacher: $('#select_teacher').val()};
                 $.post(url, postdata, function(result) {
                     var $subject_sel = $('#subject');
@@ -18,6 +18,26 @@
                 });
             });
         });
+
+       
+    </script>
+    <script>
+     $('#select_teacher').val('');
+          $('#subject').val('Моля изберете предмет');
+         $(function() {
+
+  if($("#select_teacher").val() == "")
+  {
+    $("#subject").prop("disabled", true);
+  }
+  $('#select_teacher').change(function() {
+    if($("#select_teacher").val() == "")
+      $("#subject").prop("disabled", true);
+    else
+      $("#subject").prop("disabled", false);
+  });
+
+});
     </script>
  
 </head>
@@ -30,7 +50,7 @@
 
 $survey_id = $this->uri->segment(3); 
 
-if (!$this->session->userdata('survey')) { 
+if (!$this->session->userdata('survey') OR $survey_id == 1 OR $survey_id == 2) { 
 
 
 if($this->uri->segment(3) == 1) { ?>
@@ -76,31 +96,43 @@ if($this->uri->segment(3) == 3) { ?>
 ?>
 <br/>
 <?php
+/*echo "<div class = 'valid_errors' >";
 echo validation_errors();
+echo "</div>";*/
+echo '<div>' . validation_errors() . '</div>';
 echo "<div class='col-md-10'>";
-echo form_open('index/student_surveys/' . $survey_id);
+echo form_open('survey_show/student_surveys/' . $survey_id);
 echo "<table border = '0' class='table table-striped'>";
 echo "<tr id='thead_teacher_subject'><th>Учител</th><th>Предмет</th><th>Място на попълване</th>"; //<th>Код</th>
 echo "<tr><td id='add_teacher_subject1' class='col-md-1'>";
-  
+
+$selected_teacher = $this->input->post('teacher');  
+
 echo '<select id="select_teacher" name="teacher">';
-echo '<option>Моля изберете учител</option>';
+echo '<option value = "">Моля изберете учител</option>';
 foreach ($teachers as $row) { ?>
-     <option value= "<?= $row->teacher_id ?>"><?php echo $row->first_name . "&nbsp;" . $row->last_name; ?></option>
+     <option value= "<?= $row->teacher_id ?>" <?php echo $selected_teacher == $row->teacher_id ? 'selected="selected"' : 
+    '' ?>><?php echo $row->first_name . "&nbsp;" . $row->last_name; ?></option>
 <?php } 
 echo '</select>';
 echo "</td><td  class='col-md-2'>";
-  
+
 echo '<select id="subject" name="subject">';
-echo '<option>Моля изберете учител</option>'; 
+echo '<option value = "">Моля изберете учител</option>'; 
+foreach ($subjects as $row) { ?>
+<option value= "<?= $row->subject_id ?>" ><?php echo $row->subject_name ; ?></option>
+<?php }
 echo '</select>';
 
 echo '</td><td class="col-md-5">';
-  
-echo '<select  id="subject" name="location_filling">';
-echo '<option value="">Моля изберете място на попълване</option>'; 
-echo '<option value="На училище">На училище</option>'; 
-echo '<option value="Вкъщи">Вкъщи</option>'; 
+$selected_location = $this->input->post('location_filling');  
+echo '<select  id="location_filling" name="location_filling">';
+echo '<option value="">Моля изберете място на попълване</option>'; ?>
+<option value="На училище" <?php echo $selected_location == "На училище" ? 'selected="selected"' : 
+    ''?>>На училище</option>
+<option value="Вкъщи" <?php echo $selected_location == "Вкъщи" ? 'selected="selected"' : 
+    '' ?>>Вкъщи</option>
+    <?php
 echo '</select>';
 echo '</td>';
 //echo "</td><td class='col-md-3'>";
@@ -113,9 +145,10 @@ echo "</td></tr>";
 echo "</table>";
 echo '<input type="submit" name="submit" value="Изпрати" class="btn btn-success" id="student_surveys_submit" />
 ';
-echo "</div><br/><br/>";
+echo "<br/><br/><br/><br/></div>";
 
-} else {
+} 
+if ($this->session->userdata('survey') && $survey_id == 3)  {
     redirect('index/survey3_show');
 }
 

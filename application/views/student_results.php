@@ -157,12 +157,12 @@ $(document).ready(function(){
 <table  id='example'>
  
  <thead>
-    <tr><th>Имена</th><th>Потребител</th><th>Идент.№</th> <th>Населено място</th><th>Училище</th><th>Клас</th><th>Пол</th><th>Дата на раждане</th><th>Майчин език</th><th>Анкета</th><th>Въпрос</th><th>Отговор</th>
+    <tr><th>Имена</th><th>Потребител</th><th>Идент.№</th> <th>Населено място</th><th>Училище</th><th>Клас</th><th>Пол</th><th>Дата на раждане</th><th>Майчин език</th><th>Анкета</th><th>Учител</th><th>Въпрос</th><th>Отговор</th>
     <th>Код</th><th>Тип въпрос</th> <th>Преизчислено</th><th>Скала</th><th>Емоц. компонент</th><th>Ем. опит</th>
     <th>Време</th><th>Емоции</th><th>Дата</th></tr>
   </thead>  
  <thead class="filters">   
-    <tr><td>Имена</td><td>Потребител</td><td>Идент.№</td> <td>Населено място</td><td>Училище</td><td>Клас</td><td>Пол</td><td>Дата на раждане</td><td>Майчин език</td><td>Анкета</td><td>Въпрос</td><td>Отговор</td>
+    <tr><td>Имена</td><td>Потребител</td><td>Идент.№</td> <td>Населено място</td><td>Училище</td><td>Клас</td><td>Пол</td><td>Дата на раждане</td><td>Майчин език</td><td>Анкета</td><td>Учител</td><td>Въпрос</td><td>Отговор</td>
     <td>Код</td><td>Тип въпрос</td> <td>Преизчислено</td><td>Скала</td><td>Емоц. компонент</td><td>Ем. опит</td><td>Време</td><td>Емоции</td><td>Дата</td></tr>
    </thead> 
 
@@ -178,6 +178,7 @@ $(document).ready(function(){
           <th>Дата на раждане</th>
           <th>Майчин език</th>
           <th>Анкета</th>
+          <th>Учител</th>
           <th>Въпрос</th>
           <th>Отговор</th>
           <th>Код</th>
@@ -221,6 +222,8 @@ foreach ($student_results as $row)
 	</td><td>
 	<?php echo $row->survey_name; ?>
   	</td><td>
+    <?php //echo $row->survey_name; ?>
+    </td><td>
   	<?php echo $row->question; ?>
   	</td><td>
   	<?php echo $row->answer; ?>

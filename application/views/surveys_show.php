@@ -65,15 +65,17 @@ $restored_question = $this->session->flashdata('restored_question');
 if($restored_question){
 echo "<div id='quaestors'>$restored_question </div>";
 } 
-echo "<br/><br/>";
 
+echo "<br/><br/>";
 
 $name=$survey_name; ?>
 <h3> <?php echo $name['survey_name']; ?> </h3><br/>
 <?php
 
 echo "<table border='0'>";   
+echo "<div class = 'valid_errors' >";
 echo validation_errors();
+echo "</div>";
 
 foreach ($survey as $row)
 {
@@ -85,7 +87,7 @@ foreach ($survey as $row)
 	echo "<input type='hidden' name='question_id' value='$row->question_id' />";
 	echo "</td>";
 	echo "<td rowspan='2' class='col-md-1'>";
-	echo '<a href="/survey/index.php/index/edit_question/' . $row->survey_id . '/' . $row->question_id . '", class = "btn btn-success"> Промени </a>';
+	echo '<a href="/survey/index.php/survey_manage/edit_question/' . $row->survey_id . '/' . $row->question_id . '", class = "btn btn-success"> Промени </a>';
 	echo "</td><td class='col-md-1'>";
 	if ($row->deactivated_at == '0000-00-00 00:00:00' || empty($row->deactivated_at) ) {
 	echo '<input type="submit" name="deactivate" value="Премахни"   class="btn btn-danger" 
@@ -133,14 +135,6 @@ foreach ($survey as $row)
 }
 	
     echo "</table>";
-	
-	/*$data=array(
-		'name' => 'submit',
-		'value' => 'Изпрати',
-		'class' => 'btn btn-primary',
-		 'id' => 'survey_submit'
-	);
-	echo form_submit($data);*/
 	echo form_close();
 
 	echo form_open('admin/add_questions/' .$survey_id);
@@ -170,12 +164,11 @@ foreach ($survey as $row)
 
   		<select name = 'group_id[]' >
   		<?php
-  		echo '<option name = "group_id[]"  value="0"></option>';
-		foreach($groups_show as $row) 
-		{
-			echo '<option name = "group_id[]" value="'.$row->id.'">'.$row->group_name.'</option>';
-		  	
-		} 		
+  		echo '<option name = "group_id[]"  value="">Изберете група</option>';
+		echo '<option name = "group_id[]" value="0">Без група</option>';	
+		echo '<option name = "group_id[]" value="1">Преди</option>';	
+		echo '<option name = "group_id[]" value="2">По време</option>';	
+		echo '<option name = "group_id[]" value="3">След</option>';	
 		echo "</select>";
 		?>
   		</td><td>

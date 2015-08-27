@@ -1,7 +1,8 @@
 <?php
 
 $this->load->library('session');
-$newdata = array('time' => 6);
+$newdata = array('time' => 6
+	);
 $this->session->set_userdata($newdata);
 ?>
 <body>
@@ -25,4 +26,4 @@ $this->session->set_userdata($newdata);
 
 </div>
 <br/><br/>
-<a id='survey3_button' href="/survey/index.php/index/survey_show/4/" class='btn btn-primary'> Продължи </a>
+<a id='survey3_button' href="/survey/index.php/survey_show/survey_show/4/" class='btn btn-primary'> Продължи </a>

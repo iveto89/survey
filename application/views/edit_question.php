@@ -12,7 +12,7 @@ $survey_id = $this->uri->segment(3);
 $id = $this->uri->segment(4);
 foreach($select_question as $row) 
 {
-  echo form_open('index/update_question/'.$survey_id .'/' . $id); 	
+  echo form_open('survey_manage/update_question/'.$survey_id .'/' . $id); 	
 
   echo "<tr><td class='col-md-6'>";
   $data =array(

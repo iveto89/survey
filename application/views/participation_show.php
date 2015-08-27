@@ -19,10 +19,10 @@
 
 
 <div id = 'participation'>
-<?php echo form_open('index/participation/'); 
+<?php echo form_open('survey_show/participation/'); 
  foreach($participation as $row) { 
 if($row->participation == 'Искам да участвам' ) {
-redirect('index/surveys_show');
+redirect('survey_show/surveys_show');
 } 
 if($row->participation == 'Не искам да участвам' ) {
 ?>

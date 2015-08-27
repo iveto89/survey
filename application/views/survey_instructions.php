@@ -13,7 +13,7 @@ if($this->uri->segment(3) == 1) { ?>
 Разгледай възможните оценки внимателно и използвай само една от тях за всяко от твърденията.
 </div>
 <br/><br/>
-<a id='survey3_button' href="/survey/index.php/index/survey_show/3/" class='btn btn-primary'> Започни анкетата </a>
+<a id='survey3_button' href="/survey/index.php/survey_show/survey_show/3/" class='btn btn-primary'> Започни въпросника </a>
 <?php } 
 if($this->uri->segment(3) == 2) { ?>
 <div id='survey_instructions'>
@@ -21,7 +21,7 @@ if($this->uri->segment(3) == 2) { ?>
 Ученето може да те кара да се чувстваш по различен начин. Тази част от въпросника се отнася до емоции (чувства), които може да изпитваш,  докато учиш по този предмет. Припомни си типични ситуации, които си преживял, ДОКАТО УЧИШ за този  предмет. Прочети внимателно всяко твърдение и използвай скалата под него, за да оцениш дали си съгласен(а) с него.   
 </div>
 <br/><br/>
-<a id='survey3_button' href="/survey/index.php/index/survey_show/4/" class='btn btn-primary'> Започни анкетата </a>
+<a id='survey3_button' href="/survey/index.php/survey_show/survey_show/4/" class='btn btn-primary'> Започни въпросника </a>
 <?php } 
 ?>
 

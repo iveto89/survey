@@ -16,7 +16,7 @@
     echo "</div>";
 echo "<div id='success_show'>";
   
-  echo form_open('home/success_show');
+  echo form_open('authentication/success_show');
   $data = array(
     'name'        => 'username',
     'id'          => 'username',

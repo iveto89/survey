@@ -38,9 +38,9 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "authentication";
 $route['404_override'] = '';
-$route['index/student_surveys/(:num)'] = 'index/student_surveys/$1/';
+$route['asd/(:num)'] = 'survey_show/student_surveys/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

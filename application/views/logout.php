@@ -13,7 +13,7 @@
     echo "<div class='col-md-6' id='logout_form'>";
     echo validation_errors();
     echo "</div>";
-    echo form_open('home/login_show');
+    echo form_open('authentication/login_show');
 $data=array(
 'name' => 'username', 
 'placeholder' => 'Потребителско име', 

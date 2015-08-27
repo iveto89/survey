@@ -10,7 +10,7 @@
     echo "<div class='container'  id='container_login' >";
 
     echo "<div class='col-md-4' id='div_code' >";
-   /* echo form_open('home/code_check');
+   /* echo form_open('authentication/code_check');
     echo "<h4>Въведете Вашия код тук: </h4><br/>";
     echo "<input type='text' name='code' id='home_code' /><br/><br/>";
     echo "<input type='submit' name='code_submit' id='code_submit' value='Провери' class='btn btn-primary'/>";
@@ -18,7 +18,7 @@
     echo "</div>";
     echo "<div class='col-md-4' id='login_form' >";
     echo validation_errors();
-    echo form_open('home/login');
+    echo form_open('authentication/login');
     echo "<table border='0'>";
     echo "<tr><td>";     
     echo "Потребителско име: </td><td>";
@@ -47,7 +47,7 @@
     echo form_submit($data);
     echo '<br/><br/>';
     echo form_close();
-    echo "<a href='/survey/index.php/home/register' 
+    echo "<a href='/survey/index.php/authentication/register' 
     role='button' class='btn btn-success' id='reg_form'> Регистрация </a>";
     echo "</div>";    
     echo "</div>";
