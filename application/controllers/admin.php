@@ -68,7 +68,7 @@ class Admin extends CI_controller {
         $this->form_validation->set_rules('day', 'Ден', 'required');
         $this->form_validation->set_rules('month', 'Месец', 'required');
         $this->form_validation->set_rules('year', 'Година', 'required');
-        $this->form_validation->set_error_delimiters('<div class="valid_errors">', '</div>');
+        $this->form_validation->set_error_delimiters('<div class="msg_error">', '</div>');
        
         if ($this->form_validation->run()==FALSE)
         {
@@ -286,7 +286,7 @@ class Admin extends CI_controller {
         }
         else
         {            
-            $data['dynamic_view'] = 'edit_coordinators'; 
+            $data['dynamic_view'] = 'admin/edit_coordinators'; 
             $data['select_teachers']=$this->admin_model->teachers_with_coordinators();
             $data['select_coord_teachers']=$this->admin_model->select_teachers_by_coordinator();
             $data['teacher_name']=$this->admin_model->teacher_name();

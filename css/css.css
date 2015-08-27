@@ -721,6 +721,7 @@ body {
 .msg_error {
   font-size: 14px !important;
   color: #d9534f;
+  margin: 0 0 10px;
 }
 
 .border_error {
